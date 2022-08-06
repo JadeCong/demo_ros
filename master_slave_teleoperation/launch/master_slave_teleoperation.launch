@@ -1,0 +1,21 @@
+<launch>
+    
+    <!-- Parameters configuration -->
+    <arg name="run_master" default="true" doc="Whether run teleoperation master node." />
+    <arg name="run_slave" default="true" doc="Whether run teleoperation slave node." />
+    <arg name="run_perception" default="true" doc="Whether run teleoperation perception node." />
+    <arg name="run_visualization" default="true" doc="Whether run teleoperation visualization node." />
+    
+    <!-- Run teleoperation master node -->
+    <include file="$(find touch_teleoperation)/launch/master_touch.launch" if="$(arg run_master)" />
+    
+    <!-- Run teleoperation slave node -->
+    <include file="$(find franka_teleoperation)/launch/slave_franka.launch" if="$(arg run_slave)" />
+    
+    <!-- Run teleoperation perception node -->
+    <include file="$(find hand_perception)/launch/hand_force_publisher.launch" if="$(arg run_perception)" />
+    
+    <!-- Run teleoperation visualization node -->
+    <include file="$(find realsense_visualization)/launch/realsense_visualization.launch" if="$(arg run_visualization)" />
+    
+</launch>

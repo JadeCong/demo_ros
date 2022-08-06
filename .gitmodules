@@ -1,0 +1,3 @@
+[submodule "demo_dependencies/franka_interactive_controllers"]
+	path = demo_dependencies/franka_interactive_controllers
+	url = https://github.com/nbfigueroa/franka_interactive_controllers.git

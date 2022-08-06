@@ -1,0 +1,9 @@
+master_slave_teleoperation:
+  # Run teleoperation master node.
+  run_master: true # default: true
+  # Run teleoperation slave node.
+  run_slave: true # default: true
+  # Run teleoperation perception node.
+  run_perception: true # default: true
+  # Run teleoperation visualization node.
+  run_visualization: true # default: true
