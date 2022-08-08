@@ -17,7 +17,12 @@
 > 功能：启动Franka机器人自动化医疗插管节点，基于Hand反馈的接触力和相应的插管运动规划策略进行心脏造影的血管回路插管。<br>
 > 启动：roslaunch medical_intubation medical_intubation.launch
 
-## 4. Package Dependency: Package franka_interactive_controllers
+## 4. Package oral_swab_sampling
+
+> 功能：启动Franka机器人自动化进行口腔咽拭子采样节点，基于Hand反馈的接触力和相应的咽拭子运动规划策略进行新冠核酸的口腔咽拭子采样。<br>
+> 启动：roslaunch oral_swab_sampling oral_swab_sampling.launch
+
+## 5. Package Dependency: Package franka_interactive_controllers
 
 > 功能：对Franka机器人的Hand夹持的工具和安装在Hand上的相机进行重力补偿；锁住Franka机器人指定的关节以便更好地进行演示。<br>
 > 链接：https://github.com/nbfigueroa/franka_interactive_controllers

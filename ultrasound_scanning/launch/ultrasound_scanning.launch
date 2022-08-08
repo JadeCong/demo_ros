@@ -6,13 +6,4 @@
     <!-- Run teleoperation master node -->
     <include file="$(find touch_teleoperation)/launch/master_touch.launch" if="$(arg run_master)" />
     
-    <!-- Run teleoperation slave node -->
-    <include file="$(find franka_teleoperation)/launch/slave_franka.launch" if="$(arg run_slave)" />
-    
-    <!-- Run teleoperation perception node -->
-    <include file="$(find hand_perception)/launch/hand_force_publisher.launch" if="$(arg run_perception)" />
-    
-    <!-- Run teleoperation visualization node -->
-    <include file="$(find realsense_visualization)/launch/realsense_visualization.launch" if="$(arg run_visualization)" />
-    
 </launch>
