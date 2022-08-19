@@ -3,6 +3,7 @@
     <!-- Parameters configuration -->
     <arg name="robot_ip" default="192.168.2.1" doc="Franka robot communication IP." />
     <arg name="load_gripper" default="true" doc="Whether load franka gripper." />
+    <arg name="hand_force_topic" default="/hand/slave_hand/feedback_force" doc="Name of hand force topic." />
     
     <group ns="manual_force_teaching">
         <!-- Run real franka control -->
@@ -13,7 +14,9 @@
         
         <!-- Load franka force teaching controller -->
         <rosparam command="load" file="$(find franka_controllers)/config/franka_controllers.yaml" />
-        <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="franka_force_teaching_controller" />
+        <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="franka_force_teaching_controller">
+            <param name="hand_force_topic" type="string" value="$(arg hand_force_topic)" />
+        </node>
         
         <!-- Run rviz and update robot states -->
         <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find manual_force_teaching)/config/manual_force_teaching.rviz" />

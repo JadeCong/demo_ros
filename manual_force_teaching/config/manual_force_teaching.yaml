@@ -3,3 +3,5 @@ manual_force_teaching:
   robot_ip: "192.168.2.1" # default: "192.168.2.1"
   # Whether load franka gripper.
   load_gripper: true # default: true
+  # Name of hand force topic
+  hand_force_topic: /hand/slave_hand/feedback_force # default: /hand/slave_hand/feedback_force
