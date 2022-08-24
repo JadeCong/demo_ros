@@ -1,9 +1,31 @@
 <launch>
     
     <!-- Parameters configuration -->
-    <arg name="run_master" default="true" doc="Whether run teleoperation master node." />
+    <arg name="robot_ip" default="192.168.2.1" doc="Franka robot communication IP." />
+    <arg name="load_gripper" default="true" doc="Whether load franka gripper." />
+    <arg name="hand_force_topic" default="/hand/slave_hand/feedback_force" doc="Name of hand force topic." />
     
-    <!-- Run teleoperation master node -->
-    <include file="$(find touch_teleoperation)/launch/master_touch.launch" if="$(arg run_master)" />
+    <group ns="ultrasound_scanning">
+        <!-- Run real franka control -->
+        <include file="$(find franka_control)/launch/franka_control.launch" >
+            <arg name="robot_ip" value="$(arg robot_ip)" />
+            <arg name="load_gripper" value="$(arg load_gripper)" />
+        </include>
+        
+        <!-- Load franka ultrasound scanning motion generator -->
+        <rosparam command="load" file="$(find franka_controllers)/config/franka_controllers.yaml" />
+        <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="franka_force_teaching_controller">
+            <param name="hand_force_topic" type="string" value="$(arg hand_force_topic)" />
+        </node>
+        
+        <!-- Run rviz and update robot states -->
+        <node name="rviz" pkg="rviz" type="rviz" output="screen" args="-d $(find ultrasound_scanning)/config/ultrasound_scanning.rviz" />
+        
+        <!-- Run rqt_reconfigure for ultrasound scanning motion generator parameters -->
+        <node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure" required="false" />
+    </group>
+    
+    <!-- Run hand_force_publisher node -->
+    <include file="$(find hand_perception)/launch/hand_force_publisher.launch" />
     
 </launch>
