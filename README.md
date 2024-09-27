@@ -1,4 +1,4 @@
-# ROS Packages for Conarobot Demo
+# ROS Packages for ROS Demo
 
 ## 1. Package master_slave_teleoperation
 
