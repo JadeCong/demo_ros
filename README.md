@@ -31,3 +31,9 @@
 
 > 功能：对Franka机器人的Hand夹持的工具和安装在Hand上的相机进行重力补偿；锁住Franka机器人指定的关节以便更好地进行演示。<br>
 > 链接：https://github.com/nbfigueroa/franka_interactive_controllers
+
+---
+
+## Star History Graph
+
+[![Star History Chart](https://api.star-history.com/svg?repos=JadeCong/demo_ros&type=Date&theme=dark)](https://star-history.com/#JadeCong/demo_ros&Date&theme=dark)
